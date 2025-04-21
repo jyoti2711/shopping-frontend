@@ -1,0 +1,97 @@
+/* Cart container padding */
+.p-4, .p-6 {
+  padding: 1.5rem;
+}
+
+/* Cart heading */
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Cart item styles */
+/* Add card-style shadow & transition */
+.cart-item {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);  /* soft shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+  border-radius: 12px;
+
+}
+
+/* Optional: Add hover pop effect */
+.cart-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  background-color: #fefefe;
+}
+
+/* Product image */
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+/* Quantity buttons */
+.cart-item button {
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cart-item button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Disabled button state */
+.cart-item button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Remove button */
+.cart-item .text-red-500 {
+  color: #f44336;
+  background: transparent;
+  border: none;
+}
+
+.cart-item .text-red-500:hover {
+  text-decoration: underline;
+}
+
+/* Total text */
+.text-right {
+  text-align: right;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-xl, .text-lg {
+  font-size: 1.25rem;
+}
+
+/* Checkout Button */
+button.bg-green-500 {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button.bg-green-500:hover {
+  background-color: #45a049;
+}
