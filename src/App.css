@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  padding: 0;
+  padding-bottom: 25px;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #fff, #ffcc00, #ffb300);
+  background: linear-gradient(to bottom, #fff, #dddcd6, #dddcdb);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
