@@ -1,6 +1,8 @@
+// ProductList.tsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProductList.css";
+import { useCart } from "./cartContact"; // ✅ use context instead of props
 
 type Product = {
   id: number;
@@ -11,8 +13,8 @@ type Product = {
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<Product[]>([]);
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -21,18 +23,10 @@ const ProductList: React.FC = () => {
       .catch((error) => console.error("Failed to fetch products:", error));
   }, []);
 
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCart(savedCart);
-  }, []);
-
-  const addToCart = (product: Product) => {
-    const updatedCart = [...cart, product];
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-
+  const handleAddToCart = (product: Product) => {
+    addToCart({ ...product, quantity: 1 });
     alert(`${product.title} added to cart!`);
-    navigate("/cart"); // Cart page par redirect
+    navigate("/cart");
   };
 
   return (
@@ -44,7 +38,7 @@ const ProductList: React.FC = () => {
             <img src={product.image} alt={product.title} />
             <h4>{product.title}</h4>
             <p>${product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>

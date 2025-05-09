@@ -1,72 +1,111 @@
-/* Header Styling */
+/* Header Styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background-color: #333;
-  color: white;
-  position: relative;
-  z-index: 1000; /* Ensure header stays above banner */
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo Styling */
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-}
-
+/* Logo Section */
 .logo img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
 }
 
-/* Hamburger Menu */
-.hamburger {
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 1001;
+.logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-/* Mobile Nav Links */
+/* Desktop Navigation */
+.desktop-nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 1rem;
+}
+
+.desktop-nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.desktop-nav-links a:hover {
+  color: #007bff;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items:center;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* Hamburger for Mobile */
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+  display: block; /* Hidden by default for desktop */
+}
+
+/* Mobile Navigation (Dropdown) */
 .mobile-nav-links {
-  position: absolute;
-  top: 60px;
-  left: 95%;
-  transform: translateX(-50%) scale(0); /* Initially hidden */
-  background-color: #333;
-  width: 90px;
-  padding: 15px;
-  z-index: 1002; /* Ensure menu appears above banner */
-  text-align: center;
-  border-radius: 10px;
-  transition: all 0.1s ease-in-out;
   display: none;
 }
 
-/* Show menu when toggled */
 .mobile-nav-links.show {
-  transform: translateX(-50%) scale(1);
   display: block;
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Navigation Links */
 .mobile-nav-links a {
   display: block;
-  color: white;
-  padding: 10px;
+  margin: 10px 0;
   text-decoration: none;
-  font-size: 18px;
+  color: #333;
 }
 
-/* Responsive Fix */
-@media (max-width: 768px) {
-  .auth-links {
-    display: none;
+/* Media Queries to handle responsiveness */
+@media (min-width: 768px) {
+  .desktop-nav-links {
+    display: flex; /* Show for desktop screens */
+  }
+
+  .hamburger {
+    display: none; /* Hide for desktop */
+  }
+
+  .mobile-nav-links {
+    display: none; /* Hide for desktop */
   }
 }

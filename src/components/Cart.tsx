@@ -1,44 +1,30 @@
+// Cart.tsx
 import React from "react";
-import "./Cart.css";
+import { useCart } from "./cartContact";
 
-type CartItem = {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  quantity: number;
-};
+const Cart: React.FC = () => {
+  const { cartItems, removeFromCart, updateQuantity, calculateTotal } = useCart();
 
-type CartProps = {
-  cartItems: CartItem[];
-  onRemove: (id: number) => void;
-  onUpdateQuantity: (id: number, quantity: number) => void;
-};
-
-const Cart: React.FC<CartProps> = ({ cartItems, onRemove, onUpdateQuantity }) => {
   return (
-    <div className="cart-container">
+    <div>
       <h2>Your Cart</h2>
       {cartItems.length === 0 ? (
-        <p>No items in the cart</p>
+        <p>Your cart is empty</p>
       ) : (
-        <div className="cart-items">
-          {cartItems.map((product) => (
-            <div key={product.id} className="cart-item">
-              <img src={product.image} alt={product.title} />
-              <h4>{product.title}</h4>
-              <p>${product.price}</p>
-              <input
-                type="number"
-                min="1"
-                value={product.quantity}
-                onChange={(e) => onUpdateQuantity(product.id, parseInt(e.target.value))}
-              />
-              <button onClick={() => onRemove(product.id)}>Remove</button>
-            </div>
-          ))}
-        </div>
+        cartItems.map((item) => (
+          <div key={item.id}>
+            <h4>{item.title}</h4>
+            <p>Price: ${item.price}</p>
+            <input
+              type="number"
+              value={item.quantity}
+              onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+            />
+            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+          </div>
+        ))
       )}
+      <h3>Total: ${calculateTotal()}</h3>
     </div>
   );
 };
